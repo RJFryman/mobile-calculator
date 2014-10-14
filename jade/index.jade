@@ -6,14 +6,41 @@ html
     title
     // compiled css output
     link(href='css/ionic.app.css', rel='stylesheet')
+    link(href='css/style.css', rel='stylesheet')
     // ionic/angularjs js
     script(src='lib/ionic/js/ionic.bundle.js')
     // cordova script (this will be a 404 during development)
     script(src='cordova.js')
     // your app's js
     script(src='js/app.js')
-  body(ng-app='rjf-calculator')
+    script(src='js/main_controller.js')
+  body(ng-app='rjf-calculator', ng-controller='MainCtrl')
     ion-pane
-      ion-header-bar.bar-stable
+      ion-header-bar.bar-positive
         h1.title RJFryman's Calculator
-      ion-content
+      ion-content.has-header
+        .display {{display}}
+        .button-bar
+          a.button.button-calm(ng-click='addDisplay(7)') 7
+          a.button.button-balanced(ng-click='addDisplay(8)') 8
+          a.button.button-calm(ng-click='addDisplay(9)') 9
+          a.button.button-energized(ng-click='calculate("/")') /
+        .button-bar
+          a.button.button-balanced(ng-click='addDisplay(4)') 4
+          a.button.button-calm(ng-click='addDisplay(5)') 5
+          a.button.button-balanced(ng-click='addDisplay(6)') 6
+          a.button.button-energized(ng-click='calculate("*")') *
+        .button-bar
+          a.button.button-calm(ng-click='addDisplay(1)') 1
+          a.button.button-balanced(ng-click='addDisplay(2)') 2
+          a.button.button-calm(ng-click='addDisplay(3)') 3
+          a.button.button-energized(ng-click='calculate("-")') -
+        .button-bar
+          a.button.button-royal(ng-click='addDisplay(".")') .
+          a.button.button-calm(ng-click='addDisplay(0)') 0
+          a.button.button-royal(ng-click='clearDisplay(c)') c
+          a.button.button-energized(ng-click='calculate("+")') +
+        .button-bar
+          a.button.button-assertive(ng-click='answer()') =
+      .bar.bar-footer.bar-dark
+        .title @RJFryman
